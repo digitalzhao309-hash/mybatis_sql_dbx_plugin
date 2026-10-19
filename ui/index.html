@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MyBatis SQL</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="toolbar">
+    <div class="brand">
+      <img id="logo" class="logo" alt="" hidden>
+      <h1 data-i18n="title">MyBatis SQL 生成器</h1>
+    </div>
+    <div class="toolbar-actions">
+      <label class="field-inline">
+        <span data-i18n="dialect">方言</span>
+        <select id="dialect">
+          <option value="oracle">Oracle</option>
+          <option value="sqlserver">SQL Server</option>
+        </select>
+      </label>
+      <button id="btn-example" class="btn" data-i18n="loadExample">载入示例</button>
+      <button id="btn-render" class="btn primary" data-i18n="render">转换 SQL</button>
+      <button id="btn-copy" class="btn" data-i18n="copy">复制结果</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="pane">
+      <div class="field grow">
+        <label for="mapper">
+          <span data-i18n="mapperLabel">Mapper XML</span>
+          <span class="hint" data-i18n="mapperHint">完整 XML / 片段均可</span>
+        </label>
+        <textarea id="mapper" spellcheck="false" placeholder="&lt;?xml version=&quot;1.0&quot;?&gt;..."></textarea>
+      </div>
+      <div class="field">
+        <label for="params">
+          <span data-i18n="paramsLabel">入参</span>
+          <span class="hint" data-i18n="paramsHint">JSON（{...} / [...]）或 GET 参数串 k=v&amp;k=v</span>
+        </label>
+        <textarea id="params" spellcheck="false"></textarea>
+      </div>
+      <div class="field row">
+        <label for="statement" data-i18n="statementLabel">Statement</label>
+        <div class="combo" id="statement-combo">
+          <input id="statement" type="text" autocomplete="off" spellcheck="false">
+          <button type="button" class="combo-arrow" id="statement-arrow" tabindex="-1" aria-hidden="true"></button>
+          <ul class="combo-list" id="statement-list" hidden></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="pane">
+      <div class="field grow">
+        <label><span data-i18n="outputLabel">生成的 SQL</span></label>
+        <pre id="output" class="code" aria-live="polite"></pre>
+      </div>
+      <div id="warnings" class="warnings" hidden></div>
+    </section>
+  </main>
+
+  <footer class="statusbar">
+    <span id="status"></span>
+    <span id="offline" class="offline" hidden data-i18n="offline">未检测到 DBX 宿主（window.dbxPlugin），请通过 DBX 或 dbx-plugin dev 打开</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

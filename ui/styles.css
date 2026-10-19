@@ -1,0 +1,331 @@
+/* MyBatis SQL 生成器 — DBX 工作台样式
+ * 优先使用 DBX 主题令牌（--color-* / --radius-* / --font-*），
+ * 令牌缺失时回退到内置配色，并跟随 data-dbx-theme 深浅主题。 */
+
+:root {
+  --msq-bg: var(--color-background, #f6f8fa);
+  --msq-panel: var(--color-panel, #ffffff);
+  --msq-text: var(--color-foreground, #1f2937);
+  --msq-text-muted: var(--color-muted-foreground, #6b7280);
+  --msq-border: var(--color-border, #d1d5db);
+  --msq-accent: var(--color-accent, #2563eb);
+  --msq-accent-text: var(--color-accent-foreground, #ffffff);
+  --msq-warn-bg: var(--color-warning-bg, #fef3c7);
+  --msq-warn-text: var(--color-warning-foreground, #92400e);
+  --msq-error: var(--color-danger, #dc2626);
+  --msq-radius: var(--radius-md, 8px);
+  --msq-font: var(--font-sans, system-ui, "Segoe UI", "Microsoft YaHei", sans-serif);
+  --msq-font-mono: var(--font-mono, Consolas, "Courier New", monospace);
+}
+
+html[data-dbx-theme="dark"] {
+  --msq-bg: #111827;
+  --msq-panel: #1f2937;
+  --msq-text: #e5e7eb;
+  --msq-text-muted: #9ca3af;
+  --msq-border: #374151;
+  --msq-accent: #3b82f6;
+  --msq-accent-text: #ffffff;
+  --msq-warn-bg: #78350f;
+  --msq-warn-text: #fde68a;
+  --msq-error: #f87171;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-dbx-theme]) {
+    --msq-bg: #111827;
+    --msq-panel: #1f2937;
+    --msq-text: #e5e7eb;
+    --msq-text-muted: #9ca3af;
+    --msq-border: #374151;
+    --msq-accent: #3b82f6;
+    --msq-accent-text: #ffffff;
+    --msq-warn-bg: #78350f;
+    --msq-warn-text: #fde68a;
+    --msq-error: #f87171;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--msq-font);
+  font-size: 13px;
+  color: var(--msq-text);
+  background: var(--msq-bg);
+}
+
+/* ---------- 顶栏 ---------- */
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--msq-border);
+  background: var(--msq-panel);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.logo { width: 20px; height: 20px; }
+
+.brand h1 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.field-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--msq-text-muted);
+}
+
+select, input, textarea, button {
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--msq-text);
+  background: var(--msq-panel);
+  border: 1px solid var(--msq-border);
+  border-radius: var(--msq-radius);
+}
+
+select, input { padding: 4px 8px; }
+
+.btn {
+  padding: 5px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn:hover { border-color: var(--msq-accent); }
+
+.btn.primary {
+  color: var(--msq-accent-text);
+  background: var(--msq-accent);
+  border-color: var(--msq-accent);
+}
+
+.btn.primary:hover { filter: brightness(1.08); }
+
+/* ---------- 主区 ---------- */
+
+.layout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(320px, 1fr);
+  gap: 10px;
+  padding: 10px;
+  min-height: 0;
+}
+
+@media (max-width: 760px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+.pane {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+  padding: 10px;
+  border: 1px solid var(--msq-border);
+  border-radius: var(--msq-radius);
+  background: var(--msq-panel);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 0;
+}
+
+.field.grow { flex: 1; }
+
+.field.row {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.field.row .combo { flex: 1; min-width: 0; }
+
+.field label {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.field label .hint {
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--msq-text-muted);
+}
+
+textarea {
+  flex: 1;
+  min-height: 120px;
+  padding: 8px;
+  resize: vertical;
+  font-family: var(--msq-font-mono);
+  line-height: 1.5;
+}
+
+textarea:focus, input:focus, select:focus, .btn:focus-visible {
+  outline: 2px solid var(--msq-accent);
+  outline-offset: -1px;
+}
+
+.code {
+  flex: 1;
+  margin: 0;
+  padding: 8px;
+  overflow: auto;
+  white-space: pre;
+  font-family: var(--msq-font-mono);
+  font-size: 12.5px;
+  line-height: 1.55;
+  border: 1px dashed var(--msq-border);
+  border-radius: var(--msq-radius);
+  background: var(--msq-bg);
+  min-height: 160px;
+}
+
+.warnings {
+  padding: 6px 10px;
+  border-radius: var(--msq-radius);
+  background: var(--msq-warn-bg);
+  color: var(--msq-warn-text);
+  white-space: pre-wrap;
+}
+
+/* ---------- 状态栏 ---------- */
+
+.statusbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 12px;
+  border-top: 1px solid var(--msq-border);
+  background: var(--msq-panel);
+  color: var(--msq-text-muted);
+  min-height: 26px;
+}
+
+.statusbar .error { color: var(--msq-error); }
+
+.offline {
+  margin-left: auto;
+  color: var(--msq-warn-text);
+}
+
+/* ---------- Statement combobox（样式仿 Element-UI 可搜索下拉） ---------- */
+
+.combo { position: relative; }
+
+.combo input {
+  width: 100%;
+  padding-right: 28px;
+}
+
+.combo-arrow {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  width: 26px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.combo-arrow::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid var(--msq-text-muted);
+  transition: transform 0.2s;
+}
+
+.combo.open .combo-arrow::before { transform: rotate(180deg); }
+
+.combo-list {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  margin: 0;
+  padding: 6px 0;
+  list-style: none;
+  max-height: 240px;
+  overflow: auto;
+  background: var(--msq-panel);
+  border: 1px solid var(--msq-border);
+  border-radius: var(--msq-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 面板向上弹出：输入框贴近页面底部时由 JS 动态切换 */
+.combo-list.dropup {
+  top: auto;
+  bottom: calc(100% + 6px);
+}
+
+.combo-list li {
+  padding: 5px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.combo-list li:hover,
+.combo-list li.active {
+  background: var(--msq-accent);
+  color: var(--msq-accent-text);
+}
+
+.combo-list li.combo-empty {
+  color: var(--msq-text-muted);
+  cursor: default;
+}
+
+.combo-list li.combo-empty:hover {
+  background: transparent;
+  color: var(--msq-text-muted);
+}

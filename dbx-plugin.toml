@@ -1,0 +1,19 @@
+# DBX 插件 CLI 配置（dbx-plugin dev / dbx-plugin package 读取）
+# manifest.json 是运行时契约的唯一权威来源；本文件只影响 CLI 行为。
+
+schema_version = 1
+
+[package]
+# 打包时仅包含以下目录（manifest.json 始终随包携带）
+include = ["assets", "ui", "backend"]
+
+[backend]
+# CLI 仅支持 rust/go 构建编排；实际由 tools\shim\cargo.exe 桩把预构建的
+# Java sidecar 启动器放进 CARGO_TARGET_DIR\release\（详见 scripts\build.cmd）。
+# 注意：binary 只填 stem，CLI 在 windows 目标上会自动追加 ".exe"。
+language = "rust"
+directory = "backend"
+binary = "backend"
+
+[dev]
+# ui 为纯静态资源（无 npm 构建），无需配置 ui_build / ui_watch

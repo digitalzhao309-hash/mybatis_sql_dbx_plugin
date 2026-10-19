@@ -1,0 +1,18 @@
+# 构建输出（二进制产物不进 Git，上架用未签名包走 GitHub Release）
+dist/
+backend-java/target/
+backend/windows-x64/backend.exe
+
+# IDE / 系统
+.idea/
+*.iml
+.vscode/
+Thumbs.db
+.DS_Store
+
+# 日志
+*.log
+
+# 可选：若嫌仓库体积过大，可放开下面两行（新电脑改走联网下载依赖，tools/settings.xml 已配 Aliyun 镜像）
+# tools/apache-maven-3.9.9/
+# tools/m2-repo/

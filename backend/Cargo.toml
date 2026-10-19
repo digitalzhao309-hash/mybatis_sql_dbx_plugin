@@ -1,0 +1,9 @@
+[package]
+name = "backend"
+version = "0.1.0"
+edition = "2021"
+
+# 说明：本 Cargo.toml 仅为满足 dbx-plugin CLI 的打包校验而存在。
+# 真实后端是 Java sidecar，由 scripts\build.cmd 构建（Maven fat jar + csc.exe 启动器）。
+# 打包时 PATH 中的 tools\shim\cargo.exe 桩会把预构建的 backend.exe
+# 放到 CLI 期望的 CARGO_TARGET_DIR\release\ 位置，跳过真实 Rust 构建。
