@@ -4,6 +4,10 @@
 
 由原 Java 桌面工具重构为 DBX 插件：UI 层为插件工作台页面，SQL 渲染逻辑下沉为 Java 8 sidecar 后端，通过 stdio JSONL JSON-RPC（Sidecar Protocol v1）与宿主通信。
 
+## 开发说明
+
+- 本项目使用 AI 完成开发，由作者测试提交
+
 ## 目录结构
 
 ```
