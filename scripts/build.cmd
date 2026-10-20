@@ -55,7 +55,7 @@ if not defined CSC (
   echo or change the manifest executable to backend\windows-x64\backend.cmd.
   goto :done
 )
-"%CSC%" /nologo /out:"%EXEDIR%\backend.exe" /optimize+ scripts\BackendLauncher.cs
+"%CSC%" /nologo /target:exe /optimize+ /out:"%EXEDIR%\backend.exe" scripts\BackendLauncher.cs
 if errorlevel 1 (
   echo BUILD FAILED: csc.exe compile step failed.
   popd
