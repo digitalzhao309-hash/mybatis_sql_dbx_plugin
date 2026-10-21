@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "digitalzhao.mybatis_sql_dbx_plugin",
   "name": "MyBatis SQL 生成器",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "digitalzhao",
   "description": "粘贴 MyBatis mapper XML 与入参，基于 MyBatis 官方引擎渲染出可直接执行的 SQL（支持 Oracle / SQL Server 方言字面量）。",
   "icon": "assets/plugin.svg",

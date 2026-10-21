@@ -1,6 +1,6 @@
 [package]
 name = "backend"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 
 # 说明：本 Cargo.toml 仅为满足 dbx-plugin CLI 的打包校验而存在。

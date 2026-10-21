@@ -35,7 +35,7 @@ public final class Main {
 
     /** 必须与 manifest.json 的 id / version 完全一致 */
     private static final String PLUGIN_ID = "digitalzhao.mybatis_sql_dbx_plugin";
-    private static final String PLUGIN_VERSION = "0.1.0";
+    private static final String PLUGIN_VERSION = "0.1.1";
     private static final String LOG_PREFIX = "[mybatis_sql_dbx_backend] ";
 
     private static final int CODE_PARSE_ERROR = -32700;
